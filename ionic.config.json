@@ -1,0 +1,7 @@
+{
+  "name": "diabetes-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
