@@ -1,0 +1,57 @@
+page-login {
+    ion-content {
+        background-color: color($colors, primary) !important;
+
+        .logo_image {
+            width: 50%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo_name {
+            width: 80%;
+            height: 15%;
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 12px;
+        }
+
+        .item-block {
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin-bottom: 2px;
+        }
+        
+        .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+        .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+            border: none !important; 
+            box-shadow: 0 0 0 0 transparent !important;
+        }
+
+        .list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus):last-child,
+        .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child, .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
+            border: 1px solid #333 !important;
+            box-shadow: 0 0 0 0 transparent !important;
+        }
+
+        button[disabled] {
+            background-color: #f44336 !important;
+            opacity: 0.8 !important;
+        }
+
+        .btn-submit {
+            background-color: #f44336 !important;
+            height: 45px;
+            border-radius: 8px;
+            color: #fff;
+        }
+
+        .btn-register {
+            background-color: #e3e3e3;
+            height: 45px;
+            border-radius: 8px;
+            color: #555;
+        }
+    }
+    
+}

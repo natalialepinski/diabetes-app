@@ -1,0 +1,31 @@
+<ion-content padding>
+  <img src="../assets/imgs/img_placeholder.png" alt="Logo Name" class="logo_name">
+  <img src="../assets/imgs/tiabete.png" alt="Logo Image" class="logo_image">
+
+  <form #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input placeholder="Login" name="login" id="login" type="email" required [(ngModel)]="registerCredentials.email" #email></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input placeholder="Senha" name="senha" id="senha" type="password" required [(ngModel)]="registerCredentials.password"></ion-input>
+              </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+              <button ion-button class="btn-submit" full clear type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
+                <div class="login-link  div-cadastrar">
+                  <button ion-button class="btn-register" type="button" block clear (click)="helper.toggleRegister()">Não possui conta? Cadastre-se</button>
+                </div>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

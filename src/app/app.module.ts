@@ -13,6 +13,9 @@ import { FeedPage } from '../pages/feed/feed';
 import { ReceitasPage } from '../pages/receitas/receitas';
 import { AlimentacaoPage } from '../pages/alimentacao/alimentacao';
 import { DuvidasPage } from '../pages/duvidas/duvidas';
+import { LoginPage } from '../pages/login/login';
+import { LoginProvider } from '../providers/login/login-provider';
+import { HelperProvider } from '../providers/helper/helper';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { DuvidasPage } from '../pages/duvidas/duvidas';
     FeedPage,
     ReceitasPage,
     AlimentacaoPage,
-    DuvidasPage
+    DuvidasPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -38,11 +42,14 @@ import { DuvidasPage } from '../pages/duvidas/duvidas';
     FeedPage,
     ReceitasPage,
     AlimentacaoPage,
-    DuvidasPage
+    DuvidasPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    LoginProvider,
+    HelperProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
