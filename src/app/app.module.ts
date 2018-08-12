@@ -16,6 +16,7 @@ import { DuvidasPage } from '../pages/duvidas/duvidas';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login-provider';
 import { HelperProvider } from '../providers/helper/helper';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HelperProvider } from '../providers/helper/helper';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],

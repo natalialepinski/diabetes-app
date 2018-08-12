@@ -23,7 +23,7 @@ export class LoginProvider {
       return Observable.create(observer => {
         // At this point make a request to your backend to make a real check!
         // tslint:disable-next-line:quotemark
-        let access = (credentials.password === "123456" && credentials.email === "tia.bete@demo.com");
+        let access = (credentials.password === "1" && credentials.email === "1");
 		this.currentUser = new User('Tia Bete', 'tia.bete@demo.com');
         observer.next(access);
         observer.complete();
