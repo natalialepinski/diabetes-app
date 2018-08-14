@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable'
 
 /**
  * Generated class for the ReceitasPage page.
@@ -15,11 +17,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ReceitasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //criando objeto de receitas//
+  public receitas : any; 
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
+    this.carregaReceitas();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReceitasPage');
+  }
+
+  carregaReceitas(){
+    let data:Observable<any>;
+    data =  this.http.get('https://my-json-server.typicode.com/Rodrigopaz97/Feeds/receitas');
+    data.subscribe(result => {
+      this.receitas = result;
+    })
   }
 
 }

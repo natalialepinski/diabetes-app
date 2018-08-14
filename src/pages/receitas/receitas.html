@@ -10,5 +10,20 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngFor = "let receita of receitas">
+    <img src="{{receita.link_imagem}}"/>
+      <ion-card-content>
+        <ion-card-title style="color: #0fa698">
+          {{receita.receita}}
+        </ion-card-title>
+        <p >
+           {{receita.modoPreparo}}
+        </p>
+   </ion-card-content>
+  <!--  <ion-item>
+      <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
+        Albums
+      <ion-badge item-end>9</ion-badge> 
+    </ion-item> -->
+  </ion-card>
 </ion-content>
