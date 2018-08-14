@@ -1,5 +1,5 @@
 <ion-content padding>
-  <img src="../assets/imgs/img_placeholder.png" alt="Logo Name" class="logo_name">
+  <img src="../assets/imgs/TiaBete_Preto.png" alt="Logo Name" class="logo_name">
   <img src="../assets/imgs/tiabete.png" alt="Logo Image" class="logo_image">
 
   <form #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
@@ -21,7 +21,7 @@
           <ion-list>
               <button ion-button class="btn-submit" full clear type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
                 <div class="login-link  div-cadastrar">
-                  <button ion-button class="btn-register" type="button" block clear (click)="helper.toggleRegister()">Não possui conta? Cadastre-se</button>
+                  <button ion-button class="btn-register" type="button" block clear (click)="openCadastroPage()">Não possui conta? Cadastre-se</button>
                 </div>
           </ion-list>
         </ion-col>

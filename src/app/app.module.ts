@@ -15,7 +15,7 @@ import { AlimentacaoPage } from '../pages/alimentacao/alimentacao';
 import { DuvidasPage } from '../pages/duvidas/duvidas';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login-provider';
-import { HelperProvider } from '../providers/helper/helper';
+import { CadastroPage } from '../pages/cadastro/cadastro';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { HelperProvider } from '../providers/helper/helper';
     ReceitasPage,
     AlimentacaoPage,
     DuvidasPage,
-    LoginPage
+    LoginPage,
+    CadastroPage
   ],
   imports: [
     BrowserModule,
@@ -43,13 +44,13 @@ import { HelperProvider } from '../providers/helper/helper';
     ReceitasPage,
     AlimentacaoPage,
     DuvidasPage,
-    LoginPage
+    LoginPage,
+    CadastroPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LoginProvider,
-    HelperProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

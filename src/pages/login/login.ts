@@ -3,17 +3,17 @@ import { NavController, AlertController, LoadingController,	Loading } from 'ioni
 import { LoginProvider } from '../../providers/login/login-provider';
 import { HelperProvider } from '../../providers/helper/helper'
 import { HomePage } from '../home/home';
+import { CadastroPage } from '../cadastro/cadastro';
 
 @Component({
 	selector: 'page-login',
-	templateUrl: 'login.html',
-	providers: [HelperProvider]
+	templateUrl: 'login.html'
 })
 export class LoginPage {
 	loading: Loading;
 	registerCredentials = { email: '', password: '' };
 
-	constructor( private nav: NavController, private auth: LoginProvider,	private alertCtrl: AlertController, private loadingCtrl: LoadingController, private helper: HelperProvider ) {}
+	constructor( private nav: NavController, private auth: LoginProvider,	private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
 
 	public login() {
 		this.showLoading();
@@ -49,5 +49,9 @@ export class LoginPage {
 		});
 		alert.present();
 		console.log(alert);
+	}
+
+	openCadastroPage(){
+		this.nav.push(CadastroPage);
 	}
 }
