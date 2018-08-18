@@ -1,7 +1,6 @@
 <ion-content padding>
-  <img src="../assets/imgs/TiaBete_Preto.png" alt="Logo Name" class="logo_name">
-  <img src="../assets/imgs/tiabete.png" alt="Logo Image" class="logo_image">
-
+    <img src="../assets/imgs/TiaBete_Preto.png" alt="Logo Name" class="logo_name">
+    <img src="../assets/imgs/tiabete.png" alt="Logo Image" class="logo_image">
   <form #registerForm="ngForm" (ngSubmit)="login()" autocomplete="off">
     <ion-grid>
       <ion-row>
@@ -13,6 +12,9 @@
             <ion-item>
                 <ion-input placeholder="Senha" name="senha" id="senha" type="password" required [(ngModel)]="registerCredentials.password"></ion-input>
               </ion-item>
+              <div class="login-link forget-password">
+                <a href="#">Esqueceu a senha?</a>
+              </div>
           </ion-list>
         </ion-col>
       </ion-row>
@@ -20,7 +22,7 @@
         <ion-col>
           <ion-list>
               <button ion-button class="btn-submit" full clear type="submit" [disabled]="!registerForm.form.valid">Entrar</button>
-                <div class="login-link  div-cadastrar">
+                <div class="login-link  registration">
                   <button ion-button class="btn-register" type="button" block clear (click)="openCadastroPage()">Não possui conta? Cadastre-se</button>
                 </div>
           </ion-list>

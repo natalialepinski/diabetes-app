@@ -35,6 +35,17 @@ page-login {
             box-shadow: 0 0 0 0 transparent !important;
         }
 
+        .forget-password {
+            float: right;
+            padding: 2px 2px 0 0;
+        }
+
+        .forget-password a {
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
         button[disabled] {
             background-color: #f44336 !important;
             opacity: 0.8 !important;
