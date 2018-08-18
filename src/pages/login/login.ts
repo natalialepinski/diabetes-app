@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController,	Loading } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login-provider';
-import { HelperProvider } from '../../providers/helper/helper'
 import { HomePage } from '../home/home';
 import { CadastroPage } from '../cadastro/cadastro';
 
@@ -13,7 +12,12 @@ export class LoginPage {
 	loading: Loading;
 	registerCredentials = { email: '', password: '' };
 
-	constructor( private nav: NavController, private auth: LoginProvider,	private alertCtrl: AlertController, private loadingCtrl: LoadingController) {}
+	constructor( 
+		private nav: NavController, 
+		private auth: LoginProvider, 
+		private alertCtrl: AlertController, 
+		private loadingCtrl: LoadingController
+	) {}
 
 	public login() {
 		this.showLoading();

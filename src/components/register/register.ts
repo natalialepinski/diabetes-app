@@ -1,41 +1,36 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login-provider';
+import { HelperProvider } from '../../providers/helper/helper';
 import { HomePage } from '../../pages/home/home';
-
-@IonicPage()
 @Component({
-  selector: 'page-cadastro',
-  templateUrl: 'cadastro.html',
+	selector: 'register-cp',
+	templateUrl: 'register.html',
+	providers: [HelperProvider]
 })
-export class CadastroPage {
-  createSuccess = false;
-  registerCredentials = { name:'', sobrenome: '', email: '', password: '' };
-  
-  constructor(
-    public nav: NavController, 
-    public navParams: NavParams,
+export class RegisterComponent {
+	createSuccess = false;
+	registerCredentials = { name:'', email: '', password: '' };
+
+	constructor(
+		private nav: NavController,
 		private auth: LoginProvider,
 		private alertCtrl: AlertController,
-  ) {}
+		private helper: HelperProvider
+	) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastroPage');
-  }
-
-  
 	public register() {
 		this.auth.register(this.registerCredentials).subscribe(
 			success => {
 				if (success) {
 					this.createSuccess = true;
-					this.showPopup('Sucesso', 'Cadastro realizado');
+					this.showPopup('Success', 'Account created.');
 				} else {
-					this.showPopup('Erro', 'Ocorreu um erro, por favor, tente novamente');
+					this.showPopup('Error', 'Problem creating account.');
 				}
 			},
 			error => {
-				this.showPopup('Erro', error);
+				this.showPopup('Error', error);
 			}
 		);
 	}

@@ -1,7 +1,15 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      
+      <ion-title></ion-title>
+	  <img src="assets/imgs/profile-image.png" width="60px" />
+	  <ion-buttons end>
+		<button ion-button clear menuClose (click)="logout()">
+			Logout
+		</button>
+	</ion-buttons>
+	<ion-row>{{ username }}</ion-row>
+	<ion-row>{{ email }}</ion-row>
     </ion-toolbar>
   </ion-header>
 

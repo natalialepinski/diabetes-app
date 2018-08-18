@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
+import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { GraficosPage } from '../pages/graficos/graficos';
@@ -13,7 +14,8 @@ import { DuvidasPage } from '../pages/duvidas/duvidas';
 import { LoginPage } from '../pages/login/login';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+	providers: [Keyboard, AndroidFullScreen]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -21,8 +23,17 @@ export class MyApp {
   rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  username = '';
+  email = '';
+  
+  constructor(
+    public platform: Platform,
+		public statusBar: StatusBar,
+		public splashScreen: SplashScreen,
+		private keyboard: Keyboard,
+		private androidFullScreen: AndroidFullScreen,
+		public events: Events
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -36,6 +47,11 @@ export class MyApp {
       { title: 'Tire suas dúvidas', component: DuvidasPage }
     ];
 
+    
+		events.subscribe('user:created', (username, email) => {
+			this.username = username;
+			this.email = email;
+		});
   }
 
   initializeApp() {
@@ -52,4 +68,20 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+	hideStatusBar() {
+		this.keyboard.disableScroll(true);
+		this.keyboard.hideKeyboardAccessoryBar(true);
+		this.androidFullScreen
+			.isImmersiveModeSupported()
+			.then(() => this.androidFullScreen.immersiveMode())
+			.catch((error: any) => console.log(error));
+		this.statusBar.hide();
+		this.statusBar.overlaysWebView(false);
+	}
+
+	public logout() {
+		this.auth.logout().subscribe(succ => {
+			this.nav.setRoot(LoginPage);
+		});
+	}
 }
