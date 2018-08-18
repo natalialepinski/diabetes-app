@@ -1,7 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events } from 'ionic-angular';
-import { Keyboard } from '@ionic-native/keyboard';
-import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
@@ -12,10 +10,10 @@ import { ReceitasPage } from '../pages/receitas/receitas';
 import { AlimentacaoPage } from '../pages/alimentacao/alimentacao';
 import { DuvidasPage } from '../pages/duvidas/duvidas';
 import { LoginPage } from '../pages/login/login';
+import { LoginProvider } from '../providers/login/login-provider';
 
 @Component({
-  templateUrl: 'app.html',
-	providers: [Keyboard, AndroidFullScreen]
+  templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -29,9 +27,8 @@ export class MyApp {
   constructor(
     public platform: Platform,
 		public statusBar: StatusBar,
-		public splashScreen: SplashScreen,
-		private keyboard: Keyboard,
-		private androidFullScreen: AndroidFullScreen,
+    public splashScreen: SplashScreen,
+    public auth: LoginProvider,
 		public events: Events
   ) {
     this.initializeApp();
@@ -68,16 +65,6 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
-	hideStatusBar() {
-		this.keyboard.disableScroll(true);
-		this.keyboard.hideKeyboardAccessoryBar(true);
-		this.androidFullScreen
-			.isImmersiveModeSupported()
-			.then(() => this.androidFullScreen.immersiveMode())
-			.catch((error: any) => console.log(error));
-		this.statusBar.hide();
-		this.statusBar.overlaysWebView(false);
-	}
 
 	public logout() {
 		this.auth.logout().subscribe(succ => {

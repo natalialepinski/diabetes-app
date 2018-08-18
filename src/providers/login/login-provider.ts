@@ -18,13 +18,13 @@ export class LoginProvider {
 
   public login(credentials) {
     if (credentials.email === null || credentials.password === null) {
-      return Observable.throw('Please insert credentials');
+      return Observable.throw('Por favor, insira seu login e senha');
     } else {
       return Observable.create(observer => {
         // At this point make a request to your backend to make a real check!
         // tslint:disable-next-line:quotemark
-        let access = (credentials.password === "123456" && credentials.email === "tia.bete@demo.com");
-		this.currentUser = new User('Tia Bete', 'tia.bete@demo.com');
+        let access = (credentials.password === "123456" && credentials.email === "teste@tiabete.com");
+		this.currentUser = new User('Tia Bete', 'teste@tiabete.com');
         observer.next(access);
         observer.complete();
       });
@@ -33,7 +33,7 @@ export class LoginProvider {
 
   public register(credentials) {
     if (credentials.email === null || credentials.password === null) {
-      return Observable.throw('Please insert credentials');
+      return Observable.throw('Por favor, insira seu login e senha');
     } else {
 		this.currentUser = new User(credentials.name, credentials.email);
       // At this point store the credentials to your backend!

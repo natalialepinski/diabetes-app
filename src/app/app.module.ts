@@ -51,7 +51,7 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     StatusBar,
     SplashScreen,
     LoginProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

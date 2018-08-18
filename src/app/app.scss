@@ -20,6 +20,11 @@
 ion-menu {
 
     ion-header {
+        .profile-icon {
+            width: 100px;
+            padding: 20px 0 0 10px;
+        }
+        
         .toolbar {
             height: 120px !important;
             box-shadow: none;
