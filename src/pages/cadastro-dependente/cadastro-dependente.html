@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cadastro Dependente</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content parallax>
+  <div class="bg">
+
+  </div>
+
+  <div class="main-cnt">
+    <img src="assets/imgs/profile_icon.png" class="dp">
+    <br/>
+    <!--<h1 text-center>Tia Bete</h1>  {{per.name}} -->
+
+
+    <ion-list no-lines>
+      <ion-item>
+      <ion-input type="text" placeholder="Nome" name="name" [(ngModel)]="registerCredentials.name" required></ion-input>
+      </ion-item>
+      <ion-item>
+         <ion-input type="text" placeholder="17/08/2006" name="dtNasc" [(ngModel)]="registerCredentials.dtnasc" required></ion-input>
+        <!--<ion-icon ios="ios-create" md="md-create" item-end></ion-icon>-->
+      </ion-item>
+      <ion-item>
+        <ion-icon name="call" item-start></ion-icon>
+        <ion-input type="text" placeholder="(11)12345-6789" name="telefone" [(ngModel)]="registerCredentials.telefone" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="water" item-start></ion-icon>
+        <ion-input type="text" placeholder="Tipo 1" name="tipoDiabete" [(ngModel)]="registerCredentials.tipoDiabete" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="man" item-start></ion-icon>
+        <ion-input type="number" placeholder="33.0" name="peso" [(ngModel)]="registerCredentials.peso" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="man" item-start></ion-icon>
+        <ion-input type="number" placeholder="1.70" name="altura" [(ngModel)]="registerCredentials.altura" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="man" item-start></ion-icon>
+        <ion-input type="text" placeholder="FEMININO" name="sexo" [(ngModel)]="registerCredentials.sexo" required></ion-input>
+      </ion-item>
+      <ion-item>
+
+        <ion-input type="text" placeholder="Equipamento" name="equipamento" [(ngModel)]="registerCredentials.equipamento" required></ion-input>
+      </ion-item>
+      <ion-item>
+
+        <ion-input type="text" placeholder="Modelo" name="modelo" [(ngModel)]="registerCredentials.modelo" required></ion-input>
+      </ion-item>
+      <ion-item>
+        
+        <ion-input type="text" placeholder="Medicamentos" name="medicamentos" [(ngModel)]="registerCredentials.medicamento" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button block>Salvar Dependente</button>
+    <!--<div class="qrCode">
+      <img src="assets/imgs/qrCode.png">
+    </div> -->
+
+  </div>
+</ion-content>

@@ -16,6 +16,9 @@ import { DuvidasPage } from '../pages/duvidas/duvidas';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login-provider';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { CadastroDependentePage } from '../pages/cadastro-dependente/cadastro-dependente';
+import { HelperProvider } from '../providers/helper/helper';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,10 +31,12 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     AlimentacaoPage,
     DuvidasPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    CadastroDependentePage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -45,7 +50,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
     AlimentacaoPage,
     DuvidasPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    CadastroDependentePage
   ],
   providers: [
     StatusBar,

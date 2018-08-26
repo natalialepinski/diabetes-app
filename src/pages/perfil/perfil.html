@@ -9,6 +9,40 @@
 
 
 
-<ion-content padding>
+<ion-content parallax>
+  <div class="bg">
 
+  </div>
+
+  <div class="main-cnt">
+    <img src="assets/imgs/profile_icon.png" class="dp">
+    <br/>
+    <h1 text-center>Tia Bete</h1> <!-- {{per.name}} -->
+    <ion-list no-lines>
+      <ion-item >
+          <ion-icon name="contacts" item-start></ion-icon>
+          Adc.Dependente
+          <button ion-button icon-only item-end (click)="abrirTela()">
+            <ion-icon name="arrow-dropright" ></ion-icon>
+          </button>
+
+      </ion-item>
+      <ion-item>
+         <ion-icon name="mail" item-start ></ion-icon>
+          tiaBete@narcodigos.com.br <!-- {{per.email}} -->
+        <p></p>
+        <!--<ion-icon ios="ios-create" md="md-create" item-end></ion-icon>-->
+      </ion-item>
+      <ion-item>
+        <ion-icon name="lock" item-start></ion-icon>
+          ***********
+        <!--<ion-icon ios="ios-create" md="md-create" item-end></ion-icon> -->
+      </ion-item>
+    </ion-list>
+    <button ion-button block>Editar Perfil</button>
+    <div class="qrCode">
+      <img src="assets/imgs/qrCode.png">
+    </div>
+
+  </div>
 </ion-content>
