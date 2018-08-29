@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController,	Loading } from 'ionic-angular';
+import { NavController, AlertController, LoadingController,	Loading, MenuController } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login-provider';
 import { HomePage } from '../home/home';
 import { CadastroPage } from '../cadastro/cadastro';
@@ -16,8 +16,12 @@ export class LoginPage {
 		private nav: NavController, 
 		private auth: LoginProvider, 
 		private alertCtrl: AlertController, 
-		private loadingCtrl: LoadingController
-	) {}
+		private loadingCtrl: LoadingController,
+		private menu: MenuController
+	) {
+		this.menu = menu;
+		this.menu.enable(false, 'menuLateral')
+	}
 
 	public login() {
 		this.showLoading();

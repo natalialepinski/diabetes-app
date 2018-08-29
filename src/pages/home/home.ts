@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
 @Component({
@@ -8,8 +8,12 @@ import { Events } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public menu: MenuController
+  ) {
+    this.menu = menu;
+    this.menu.enable(true, 'menuLateral')
   }
 
 }
