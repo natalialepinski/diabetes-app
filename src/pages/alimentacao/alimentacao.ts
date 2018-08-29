@@ -16,6 +16,9 @@ import { Observable } from 'rxjs/Observable'
 })
 export class AlimentacaoPage {
 
+
+  public items : any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
       //this.initializeItems();
       this.carregaAlimentos();
