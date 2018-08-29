@@ -17,7 +17,6 @@ import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login-provider';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CadastroDependentePage } from '../pages/cadastro-dependente/cadastro-dependente';
-import { HelperProvider } from '../providers/helper/helper';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
