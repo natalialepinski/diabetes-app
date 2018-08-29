@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CadastroDependentePage } from '../../pages/cadastro-dependente/cadastro-dependente';
 
 /**
  * Generated class for the PerfilPage page.
@@ -20,6 +21,11 @@ export class PerfilPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
+  }
+
+  abrirTela(){
+    //Vai abrir a tela desejada, onde a mesma deve ser importada, assim, vou achamar a cadastroContaPage
+    this.navCtrl.push(CadastroDependentePage);
   }
 
 }

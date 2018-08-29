@@ -11,4 +11,23 @@
 
 <ion-content padding>
 
+  <ion-card *ngFor = "let noticia of noticias">
+    <img src="{{noticia.thumbnail}}"/>
+      <ion-card-content>
+        <ion-card-title style="color: #0fa698">
+          {{noticia.title}}
+        </ion-card-title>
+        <p >
+           {{noticia.description}}
+        </p>
+   </ion-card-content>
+  <!--  <ion-item>
+      <ion-icon name='musical-notes' item-start style="color: #d03e84"></ion-icon>
+        Albums
+      <ion-badge item-end>9</ion-badge>
+    </ion-item> -->
+  </ion-card>
+
+
+
 </ion-content>
