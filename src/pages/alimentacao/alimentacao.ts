@@ -16,11 +16,8 @@ import { Observable } from 'rxjs/Observable'
 })
 export class AlimentacaoPage {
 
-<<<<<<< HEAD
-
-=======
   //criando objeto de alimentos//
->>>>>>> integrações
+
   public items : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
