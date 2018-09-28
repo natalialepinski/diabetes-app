@@ -1,44 +1,47 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login-provider';
 import { HomePage } from '../../pages/home/home';
 import { LoginPage } from '../login/login';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
-@IonicPage()
+
+
+
 @Component({
   selector: 'page-cadastro',
   templateUrl: 'cadastro.html',
 })
 export class CadastroPage {
   createSuccess = false;
-  registerCredentials = { name:'', sobrenome: '', email: '', password: '' };
-  
+  registerCredentials = { nome:'', email: '', senha: '' };
+
   constructor(
-    public nav: NavController, 
+    public http: HttpClient,
+
+    public nav: NavController,
     public navParams: NavParams,
 		private auth: LoginProvider,
-		private alertCtrl: AlertController,
+		private alertCtrl: AlertController
   ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPage');
+
   }
 
-  
 	public register() {
-		this.auth.register(this.registerCredentials).subscribe(
-			success => {
-				if (success) {
-					this.createSuccess = true;
-					this.showPopup('Sucesso', 'Cadastro realizado');
-				} else {
-					this.showPopup('Erro', 'Ocorreu um erro, por favor, tente novamente');
-				}
-			},
-			error => {
-				this.showPopup('Erro', error);
-			}
-		);
+
+      this.http.post("https://serverbete.herokuapp.com/rest/responsavel", this.registerCredentials)
+      .subscribe(data => {
+        console.log('foi');
+        this.createSuccess = true;
+        this.showPopup('Sucesso', 'Cadastro realizado');
+       }, error => {
+        console.log(error);
+        this.showPopup('Erro', error);
+      });
 	}
 	showPopup(title, text) {
 		let alert = this.alertCtrl.create({

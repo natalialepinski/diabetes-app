@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable'
 /**
@@ -9,14 +9,18 @@ import { Observable } from 'rxjs/Observable'
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-alimentacao',
   templateUrl: 'alimentacao.html',
 })
 export class AlimentacaoPage {
 
+<<<<<<< HEAD
 
+=======
+  //criando objeto de alimentos//
+>>>>>>> integrações
   public items : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
@@ -40,13 +44,14 @@ export class AlimentacaoPage {
 
 carregaAlimentos(){
   let data:Observable<any>;
-  data =  this.http.get('https://my-json-server.typicode.com/Rodrigopaz97/Feeds/alimentos');
+  //data =  this.http.get('https://my-json-server.typicode.com/Rodrigopaz97/Feeds/alimentos');
+  data =  this.http.get('https://serverbete.herokuapp.com/rest/alimento');
   data.subscribe(result => {
     this.items = result;
   })
 }
 abrirTela(){
-  
+
 }
 
 
