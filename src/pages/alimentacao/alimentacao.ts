@@ -16,6 +16,9 @@ import { Observable } from 'rxjs/Observable'
 })
 export class AlimentacaoPage {
 
+  //criando objeto de alimentos//
+  public items : any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
       //this.initializeItems();
       this.carregaAlimentos();
@@ -37,13 +40,14 @@ export class AlimentacaoPage {
 
 carregaAlimentos(){
   let data:Observable<any>;
-  data =  this.http.get('https://my-json-server.typicode.com/Rodrigopaz97/Feeds/alimentos');
+  //data =  this.http.get('https://my-json-server.typicode.com/Rodrigopaz97/Feeds/alimentos');
+  data =  this.http.get('https://serverbete.herokuapp.com/rest/alimento');
   data.subscribe(result => {
     this.items = result;
   })
 }
 abrirTela(){
-  
+
 }
 
 

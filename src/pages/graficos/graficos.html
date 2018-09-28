@@ -10,5 +10,24 @@
 
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Nível Glicêmico Semanal
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      Histórico de Alimentação
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <div class="divAdicionar">
+    <button ion-button class ="btnAdicionarGrafico" (click)="showPrompt()">Adicionar gráficos <i class="material-icons">add</i></button>
+  </div>
 </ion-content>

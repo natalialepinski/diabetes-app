@@ -3,27 +3,77 @@ import { NavController, AlertController, LoadingController,	Loading, MenuControl
 import { LoginProvider } from '../../providers/login/login-provider';
 import { HomePage } from '../home/home';
 import { CadastroPage } from '../cadastro/cadastro';
+import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
 	selector: 'page-login',
 	templateUrl: 'login.html'
 })
 export class LoginPage {
+
+	public usuarios : any;
 	loading: Loading;
 	registerCredentials = { email: '', password: '' };
 
-	constructor( 
-		private nav: NavController, 
-		private auth: LoginProvider, 
-		private alertCtrl: AlertController, 
+	constructor(
+		public http: HttpClient,
+		private nav: NavController,
+		private auth: LoginProvider,
+		private alertCtrl: AlertController,
 		private loadingCtrl: LoadingController,
-		private menu: MenuController
+		private menu: MenuController,
 	) {
 		this.menu = menu;
 		this.menu.enable(false, 'menuLateral')
+		this.buscaUsuarios();
+	}
+
+	public buscaUsuarios(){
+		let data:Observable<any>;
+	  //data =  this.http.get('https://my-json-server.typicode.com/Rodrigopaz97/Feeds/alimentos');
+	  data =  this.http.get("https://serverbete.herokuapp.com/rest/responsavel")
+	  data.subscribe(result => {
+	    this.usuarios = result;
+	  })
 	}
 
 	public login() {
+
+		var login = false;
+
+		for(let usr of this.usuarios) {
+
+			if(usr.email == this.registerCredentials.email && usr.senha == this.registerCredentials.password) {
+				login = true;
+				
+			}
+		}
+		if(login){
+				this.nav.setRoot(HomePage);
+			}else{
+				this.showError('E-mail ou senha inválida.');
+			}
+
+		}
+
+
+		/*
+		let data : Observable<any>;
+	  data =  this.http.get('https://serverbete.herokuapp.com/rest/responsavel');
+	  data.subscribe(result => {
+	    this.items = result;
+	  })
+
+
+
+		for(let item of this.items) {
+		  if(item.email == this.registerCredentials.email && item.senha == this.registerCredentials.senha){
+				this.nav.setRoot(HomePage);
+			}else{
+				this.showError('E-mail ou senha inválida.');
+			}
+		}
 		this.showLoading();
 		this.auth.login(this.registerCredentials).subscribe(
 			allowed => {
@@ -36,8 +86,8 @@ export class LoginPage {
 			error => {
 				this.showError(error);
 			}
-		);
-	}
+		);*/
+
 
 	showLoading() {
 		this.loading = this.loadingCtrl.create({
@@ -48,7 +98,6 @@ export class LoginPage {
 	}
 
 	showError(text) {
-		this.loading.dismiss();
 
 		let alert = this.alertCtrl.create({
 			title: 'Erro',
