@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CadastroDependentePage } from '../../pages/cadastro-dependente/cadastro-dependente';
+import { HomePage } from '../home/home';
+
 
 /**
  * Generated class for the PerfilPage page.
@@ -9,18 +11,21 @@ import { CadastroDependentePage } from '../../pages/cadastro-dependente/cadastro
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-perfil',
   templateUrl: 'perfil.html',
 })
 export class PerfilPage {
 
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilPage');
+
   }
 
   abrirTela(){

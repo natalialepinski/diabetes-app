@@ -5,6 +5,8 @@ import { HomePage } from '../home/home';
 import { CadastroPage } from '../cadastro/cadastro';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
 	selector: 'page-login',
@@ -23,6 +25,7 @@ export class LoginPage {
 		private alertCtrl: AlertController,
 		private loadingCtrl: LoadingController,
 		private menu: MenuController,
+		private storage: Storage
 	) {
 		this.menu = menu;
 		this.menu.enable(false, 'menuLateral')
@@ -41,16 +44,22 @@ export class LoginPage {
 	public login() {
 
 		var login = false;
+		var name = '';
 
 		for(let usr of this.usuarios) {
 
 			if(usr.email == this.registerCredentials.email && usr.senha == this.registerCredentials.password) {
+				console.log('usr --> ', usr);
 				login = true;
-				
+			
+
 			}
 		}
 		if(login){
+
 				this.nav.setRoot(HomePage);
+
+
 			}else{
 				this.showError('E-mail ou senha inválida.');
 			}
@@ -87,6 +96,7 @@ export class LoginPage {
 				this.showError(error);
 			}
 		);*/
+
 
 
 	showLoading() {

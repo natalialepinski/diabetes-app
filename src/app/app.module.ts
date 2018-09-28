@@ -18,6 +18,7 @@ import { LoginProvider } from '../providers/login/login-provider';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CadastroDependentePage } from '../pages/cadastro-dependente/cadastro-dependente';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

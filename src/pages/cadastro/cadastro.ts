@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
+import { NavController, AlertController, NavParams } from 'ionic-angular';
 import { LoginProvider } from '../../providers/login/login-provider';
 import { HomePage } from '../../pages/home/home';
 import { LoginPage } from '../login/login';
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-cadastro',
   templateUrl: 'cadastro.html',

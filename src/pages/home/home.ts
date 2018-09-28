@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController,NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { Storage } from '@ionic/storage';
+
+
 
 @Component({
   selector: 'page-home',
@@ -12,13 +15,19 @@ export class HomePage {
   @ViewChild('lineCanvas') lineCanvas;
 
   lineChart: any;
+   nome = '';
+   email ='';
 
   constructor(
     public navCtrl: NavController,
-    public menu: MenuController
+    public menu: MenuController,
+    public navParams : NavParams,
+    private storage: Storage
   ) {
     this.menu = menu;
-    this.menu.enable(true, 'menuLateral')
+    this.menu.enable(true, 'menuLateral');
+
+
   }
 
   ionViewDidLoad() {
