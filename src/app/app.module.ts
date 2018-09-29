@@ -19,6 +19,8 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
 import { CadastroDependentePage } from '../pages/cadastro-dependente/cadastro-dependente';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     LoginProvider,
+    NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera
   ]
 })
 export class AppModule {}
