@@ -6,6 +6,7 @@ import { CadastroPage } from '../cadastro/cadastro';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class LoginPage {
 	loading: Loading;
 	registerCredentials = { email: '', password: '' };
 
+
 	constructor(
 		public http: HttpClient,
 		private nav: NavController,
@@ -25,7 +27,8 @@ export class LoginPage {
 		private alertCtrl: AlertController,
 		private loadingCtrl: LoadingController,
 		private menu: MenuController,
-		private storage: Storage
+		private storage: Storage,
+		private nativeStorage: NativeStorage
 	) {
 		this.menu = menu;
 		this.menu.enable(false, 'menuLateral')
@@ -44,14 +47,19 @@ export class LoginPage {
 	public login() {
 
 		var login = false;
-		var name = '';
+
 
 		for(let usr of this.usuarios) {
 
 			if(usr.email == this.registerCredentials.email && usr.senha == this.registerCredentials.password) {
 				console.log('usr --> ', usr);
 				login = true;
-			
+				this.nativeStorage.setItem('usrLogado', {usrId: usr.codigo ,usrNome: usr.nome, usrEmail: usr.email})
+  			.then(
+    			() => console.log('Stored item!'),
+    			error => console.error('Error storing item', error)
+  			);
+
 
 			}
 		}

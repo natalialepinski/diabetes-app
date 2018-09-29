@@ -11,6 +11,7 @@ import { AlimentacaoPage } from '../pages/alimentacao/alimentacao';
 import { DuvidasPage } from '../pages/duvidas/duvidas';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login-provider';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,13 +24,14 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
   username = '';
   email = '';
-  
+
   constructor(
     public platform: Platform,
 		public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public auth: LoginProvider,
-		public events: Events
+		public events: Events,
+    private nativeStorage: NativeStorage
   ) {
     this.initializeApp();
 
@@ -44,11 +46,15 @@ export class MyApp {
       { title: 'Tire suas dúvidas', component: DuvidasPage }
     ];
 
-    
-		events.subscribe('user:created', (username, email) => {
-			this.username = username;
-			this.email = email;
-		});
+    this.nativeStorage.getItem('usrLogado')
+    .then(data => {
+      console.log(data);
+       this.username = data.usrNome;
+       this.email = data.usrEmail;
+    },
+    error => console.error(error)
+  );
+  
   }
 
   initializeApp() {
@@ -68,7 +74,9 @@ export class MyApp {
 
 	public logout() {
 		this.auth.logout().subscribe(succ => {
+      this.nativeStorage.remove('usrLogado');
 			this.nav.setRoot(LoginPage);
+
 		});
 	}
 }
