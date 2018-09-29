@@ -16,10 +16,7 @@ import { Observable } from 'rxjs/Observable'
 })
 export class AlimentacaoPage {
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 8445a66
   //criando objeto de alimentos//
 
   public items : any;
