@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController,NavParams,ActionSheetController,AlertController } from 'ionic-angular';
+import { NavController, MenuController,NavParams,ActionSheetController,AlertController, LoadingController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import { Storage } from '@ionic/storage';
@@ -29,7 +29,8 @@ export class HomePage {
     public navParams : NavParams,
     private storage: Storage,
     private camera: Camera,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    public loadingCtrl: LoadingController
   ) {
     this.menu = menu;
     this.menu.enable(true, 'menuLateral');
@@ -91,14 +92,18 @@ export class HomePage {
 
    //Processamento da imagem //
    recognizeImage() {
-
+    let loading = this.loadingCtrl.create({
+      content: 'Analisando Imagem...'
+    });
+  
+    loading.present();
    Tesseract.recognize(this.selectedImage)
    .catch(err => console.error(err))
    .then(result => {
      this.imageText = result.text;
    })
    .finally(resultOrError => {
-
+    loading.dismiss();
    });
  }
  //Fim Processamento da imagem //
@@ -111,7 +116,8 @@ export class HomePage {
     inputs: [
       {
         name: 'medicao',
-        placeholder: 'Nova Medição'
+        placeholder: 'Nova Medição',
+        type:'number'
       },
     ],
     buttons: [
@@ -124,6 +130,7 @@ export class HomePage {
       {
         text: 'Salvar',
         handler: data => {
+          this.imageText = data.medicao;
           console.log('Saved clicked');
         }
       }
@@ -132,6 +139,8 @@ export class HomePage {
   prompt.present();
 }
 //Fim Dialogo inserir Medicao//
+
+
 
   ionViewDidLoad() {
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
@@ -210,6 +219,20 @@ export class HomePage {
                 }
 
             });
+      }
+
+
+      //Spinner ///
+      presentLoadingDefault() {
+        let loading = this.loadingCtrl.create({
+          content: 'Please wait...'
+        });
+      
+        loading.present();
+      
+        setTimeout(() => {
+          loading.dismiss();
+        }, 5000);
       }
 
 }
